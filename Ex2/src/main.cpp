@@ -51,9 +51,14 @@ int main (int argc, char** argv) {
         double dx = sin(i * PI / 180) * r;
         double dy = cos(i * PI / 180) * r;
         x2 = x + dx, y2 = y + dy;
-//        cout << x2 << " " << y2 << endl;
         SDL_RenderDrawLineF(renderer, x1, y1, x2, y2);
         x1 = x2, y1 = y2;
+    }
+
+    SDL_SetRenderDrawColor(renderer, 255, 0, 0, 16);
+    for (int i = 0; i < 640; i ++) {
+        float height = sin(((double)i) / 10) * 10 + y;
+        SDL_RenderDrawPointF(renderer, i, height);
     }
 
     SDL_RenderPresent(renderer);
